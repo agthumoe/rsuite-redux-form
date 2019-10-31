@@ -3,6 +3,7 @@ import { Form } from 'rsuite';
 import { reduxForm } from 'redux-form';
 import TagPickerField from '../components/fields/TagPickerField';
 import Field from '../components/fields/Field';
+import SelectPickerField from '../components/fields/SelectPickerField';
 
 const formName = 'adminCreateForm';
 const Test = () => {
@@ -24,7 +25,14 @@ const Test = () => {
         label="Branch"
         placeholder="branch"
       />
-      <Field name="name" id="name" />
+      <SelectPickerField
+        data={data}
+        name="data"
+        label="Data"
+        placeholder="data"
+        searchable={false}
+      />
+      {/* <Field name="name" id="name" /> */}
     </Form>
   );
 };
