@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
+import PropTypes from 'prop-types';
 import { Field as ReduxField } from 'redux-form';
 import { FormGroup, ControlLabel, HelpBlock, TagPicker } from 'rsuite';
 import { required } from './validation';
@@ -8,7 +7,7 @@ import { required } from './validation';
 const renderField = ({
   label,
   field,
-  tagData,
+  data,
   input,
   meta: { touched, error },
   ...props
@@ -17,7 +16,7 @@ const renderField = ({
     <FormGroup className="mt-2">
       <ControlLabel>{label}</ControlLabel>
       <TagPicker
-        data={tagData}
+        data={data}
         {...props}
         defaultValue={input.value}
         placeholder="Tags"
@@ -35,17 +34,13 @@ const renderField = ({
 };
 
 const TagPickerField = props => {
-  useEffect(() => {
-    const getTags = props.getBusinessTags;
-    getTags(props.authUser.business.id);
-  }, [props.getBusinessTags, props.authUser.business.id]);
   const {
     label,
     name,
     componentClass,
     placeholder,
     type,
-    tagData,
+    data,
     isRequired,
   } = props;
 
@@ -62,22 +57,31 @@ const TagPickerField = props => {
       label={label}
       componentClass={componentClass}
       placeholder={placeholder}
-      tagData={tagData}
+      data={data}
       validate={validate}
     />
   );
 };
 
-const mapStateToProps = ({ tags }) => {
-  return {
-    tagData: _.map(tags.data, tag => ({
-      label: tag && tag.name,
-      value: tag && tag.id,
-    })),
-  };
+// const mapStateToProps = ({ tags }) => {
+//   return {
+//     tagData: _.map(tags.data, tag => ({
+//       label: tag && tag.name,
+//       value: tag && tag.id,
+//     })),
+//   };
+// };
+
+TagPickerField.propTypes = {
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['number', 'text']),
+  isRequired: PropTypes.bool,
 };
 
-export default connect(
-  mapStateToProps,
-  { getBranches, getBusinessTags }
-)(TagPickerField);
+TagPickerField.defaultProps = {
+  type: 'text',
+  isRequired: false,
+};
+export default TagPickerField;
