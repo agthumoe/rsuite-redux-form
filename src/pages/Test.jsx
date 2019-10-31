@@ -23,6 +23,7 @@ const Test = () => {
         name="branch"
         label="Branch"
         placeholder="branch"
+        type="text"
       />
       <Field name="name" id="name" />
     </Form>

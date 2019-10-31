@@ -9,7 +9,6 @@ const App = () => {
     <ConnectedRouter history={history}>
       <Switch>
         <Route path="/" component={props => <Test {...props} />} />
-        <div>Hello Fantasy!</div>
       </Switch>
     </ConnectedRouter>
   );
