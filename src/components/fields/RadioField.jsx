@@ -77,20 +77,20 @@ const RadioField = ({
 
 RadioField.propTypes = {
   label: PropTypes.string,
-  name: PropTypes.string,
-  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   isRequired: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   inline: PropTypes.bool,
 };
 
 RadioField.defaultProps = {
-  label: 'Gender',
-  name: 'gender',
-  id: 'gender',
+  label: '',
   isRequired: false,
   disabled: false,
+  defaultChecked: false,
   checked: false,
   inline: false,
 };
