@@ -4,6 +4,7 @@ import { reduxForm } from 'redux-form';
 import TagPickerField from '../components/fields/TagPickerField';
 import Field from '../components/fields/Field';
 import SelectPickerField from '../components/fields/SelectPickerField';
+import ToogleField from '../components/fields/ToggleField';
 
 const formName = 'adminCreateForm';
 const Test = () => {
@@ -34,6 +35,7 @@ const Test = () => {
         searchable={false}
       />
       <Field name="name" id="name" />
+      <ToogleField name="enable" id="enable" />
     </Form>
   );
 };
