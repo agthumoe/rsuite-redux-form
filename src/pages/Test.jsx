@@ -24,6 +24,7 @@ const Test = () => {
         name="branch"
         label="Branch"
         placeholder="branch"
+        type="text"
       />
       <SelectPickerField
         data={data}
