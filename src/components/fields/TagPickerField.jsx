@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Field as ReduxField } from 'redux-form';
 import { FormGroup, ControlLabel, HelpBlock, TagPicker } from 'rsuite';
@@ -10,6 +10,7 @@ const renderField = ({
   data,
   input,
   meta: { touched, error },
+  placeholder,
   ...props
 }) => {
   return (
@@ -19,7 +20,7 @@ const renderField = ({
         data={data}
         {...props}
         defaultValue={input.value}
-        placeholder="Tags"
+        placeholder={placeholder}
         onChange={input.onChange}
         block
       />
@@ -63,19 +64,9 @@ const TagPickerField = props => {
   );
 };
 
-// const mapStateToProps = ({ tags }) => {
-//   return {
-//     tagData: _.map(tags.data, tag => ({
-//       label: tag && tag.name,
-//       value: tag && tag.id,
-//     })),
-//   };
-// };
-
 TagPickerField.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['number', 'text']),
   isRequired: PropTypes.bool,
 };
