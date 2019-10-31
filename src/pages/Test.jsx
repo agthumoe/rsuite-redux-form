@@ -30,11 +30,13 @@ const Test = () => {
         type="text"
       />
       <SelectPickerField
+        style={{ width: 300 }}
         data={data}
         name="data"
         label="Data"
         placeholder="data"
         searchable={false}
+        cleanable={false}
       />
       {/* <Field name="name" id="name" /> */}
       <RadioField name="gender" id="gender" checked />

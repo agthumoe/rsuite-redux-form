@@ -15,19 +15,22 @@ const InputComponet = ({
   searchable,
   meta: { touched, error },
   input,
+  style,
+  cleanable,
   ...props
 }) => {
   return (
     <FormGroup className="mt-3">
       <ControlLabel htmlFor={id}>{label}</ControlLabel>
       <SelectPicker
-        style={{ width: 224 }}
+        style={style}
         data={data}
         {...props}
         {...input}
         defaultValue={input.value}
         searchable={searchable}
         placeholder={placeholder}
+        cleanable={cleanable}
         block
       />
 
@@ -48,6 +51,8 @@ const SelectPickerField = props => {
     data,
     isRequired,
     searchable,
+    style,
+    cleanable,
   } = props;
   const validate = [];
   if (isRequired) {
@@ -61,10 +66,12 @@ const SelectPickerField = props => {
       component={InputComponet}
       label={label}
       searchable={searchable}
+      cleanable={cleanable}
       componentClass={componentClass}
       placeholder={placeholder}
       data={data}
       validate={validate}
+      style={style}
     />
   );
 };
