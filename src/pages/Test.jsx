@@ -3,12 +3,10 @@ import { Form } from 'rsuite';
 import { reduxForm } from 'redux-form';
 import TagPickerField from '../components/fields/TagPickerField';
 import Field from '../components/fields/Field';
-<<<<<<< HEAD
 import RadioField from '../components/fields/RadioField';
-=======
 import SelectPickerField from '../components/fields/SelectPickerField';
 import ToogleField from '../components/fields/ToggleField';
->>>>>>> 2f837cba4e6e0e477de83a4f3c4fd2defdd722bd
+import CheckboxField from '../components/fields/CheckboxField';
 
 const formName = 'adminCreateForm';
 const Test = () => {
@@ -38,9 +36,10 @@ const Test = () => {
         placeholder="data"
         searchable={false}
       />
-      <Field name="name" id="name" />
+      {/* <Field name="name" id="name" /> */}
       <RadioField name="gender" id="gender" checked />
       <ToogleField name="enable" id="enable" />
+      <CheckboxField name="test" id="test" title="Test" />
     </Form>
   );
 };

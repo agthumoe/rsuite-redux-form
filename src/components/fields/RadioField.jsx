@@ -5,8 +5,8 @@ import { FormGroup, Radio, RadioGroup } from 'rsuite';
 
 const renderRadioField = fields => {
   const {
+    title,
     name,
-    label,
     className,
     style,
     id,
@@ -20,11 +20,10 @@ const renderRadioField = fields => {
   } = fields;
   return (
     <FormGroup className="pt-3 m-0" style={style}>
-      <label className={className}>{label}</label>
       <RadioGroup>
         <Radio
           name={name}
-          label={label}
+          title={title}
           // options={[
           //   { label: 'Male', value: 'MALE' },
           //   { label: 'Female', value: 'FEMALE' },
@@ -47,8 +46,8 @@ const renderRadioField = fields => {
 };
 
 const RadioField = ({
-  label,
   name,
+  title,
   id,
   className,
   language,
@@ -61,9 +60,9 @@ const RadioField = ({
 }) => (
   <Field
     component={renderRadioField}
+    title={title}
     name={name}
     id={id}
-    label={label}
     className={className}
     style={style}
     language={language}
@@ -76,9 +75,9 @@ const RadioField = ({
 );
 
 RadioField.propTypes = {
-  label: PropTypes.string,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  title: PropTypes.string,
   disabled: PropTypes.bool,
   isRequired: PropTypes.bool,
   defaultChecked: PropTypes.bool,
@@ -87,7 +86,7 @@ RadioField.propTypes = {
 };
 
 RadioField.defaultProps = {
-  label: '',
+  title: '',
   isRequired: false,
   disabled: false,
   defaultChecked: false,
