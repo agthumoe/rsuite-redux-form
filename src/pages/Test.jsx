@@ -3,12 +3,9 @@ import { Form } from 'rsuite';
 import { reduxForm } from 'redux-form';
 import TagPickerField from '../components/fields/TagPickerField';
 import Field from '../components/fields/Field';
-<<<<<<< HEAD
 import RadioField from '../components/fields/RadioField';
-=======
 import SelectPickerField from '../components/fields/SelectPickerField';
 import ToogleField from '../components/fields/ToggleField';
->>>>>>> 2f837cba4e6e0e477de83a4f3c4fd2defdd722bd
 
 const formName = 'adminCreateForm';
 const Test = () => {
@@ -30,6 +27,7 @@ const Test = () => {
         label="Branch"
         placeholder="branch"
         type="text"
+        style={{ width: '240px' }}
       />
       <SelectPickerField
         data={data}
