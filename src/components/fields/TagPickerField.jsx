@@ -11,6 +11,7 @@ const renderField = ({
   input,
   meta: { touched, error },
   placeholder,
+  style,
   ...props
 }) => {
   return (
@@ -18,6 +19,7 @@ const renderField = ({
       <ControlLabel>{label}</ControlLabel>
       <TagPicker
         data={data}
+        style={style}
         {...props}
         defaultValue={input.value}
         placeholder={placeholder}
@@ -42,6 +44,7 @@ const TagPickerField = props => {
     placeholder,
     type,
     data,
+    style,
     isRequired,
   } = props;
 
@@ -53,6 +56,7 @@ const TagPickerField = props => {
   return (
     <ReduxField
       name={name}
+      style={style}
       type={type}
       component={renderField}
       label={label}

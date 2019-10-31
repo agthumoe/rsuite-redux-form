@@ -28,6 +28,7 @@ const Test = () => {
         label="Branch"
         placeholder="branch"
         type="text"
+        style={{ width: '240px' }}
       />
       <SelectPickerField
         style={{ width: 300 }}
