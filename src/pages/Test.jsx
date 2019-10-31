@@ -3,6 +3,7 @@ import { Form } from 'rsuite';
 import { reduxForm } from 'redux-form';
 import TagPickerField from '../components/fields/TagPickerField';
 import Field from '../components/fields/Field';
+import ToogleField from '../components/fields/ToggleField';
 
 const formName = 'adminCreateForm';
 const Test = () => {
@@ -25,6 +26,7 @@ const Test = () => {
         placeholder="branch"
       />
       <Field name="name" id="name" />
+      <ToogleField name="enable" id="enable" />
     </Form>
   );
 };

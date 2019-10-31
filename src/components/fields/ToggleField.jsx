@@ -4,23 +4,25 @@ import { FormGroup, ControlLabel, HelpBlock, Toggle } from 'rsuite';
 
 const InputComponet = ({
   label,
-  field, // { name, value, onChange, onBlur }
-  form: { touched, errors },
-  ...props
+  name,
+  input, // { name, value, onChange, onBlur }
+  meta: { touched, error },
+  // ...props
+  ...field
 }) => {
   return (
     <FormGroup>
       <ControlLabel>{label}</ControlLabel>
       <Toggle
-        {...field}
-        {...props}
-        defaultChecked={field.value}
+        {...input}
+        // {...props}
+        defaultChecked
         onChange={checked => {
           field.onChange(checked);
         }}
       />
-      {touched[field.name] && errors[field.name] && (
-        <HelpBlock style={{ color: 'red' }}>{errors[field.name]}</HelpBlock>
+      {touched[field.name] && error[field.name] && (
+        <HelpBlock style={{ color: 'red' }}>{error[field.name]}</HelpBlock>
       )}
     </FormGroup>
   );
