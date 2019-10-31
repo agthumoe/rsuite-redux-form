@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { FormGroup, Radio, RadioGroup } from 'rsuite';
+import { FormGroup, Radio, RadioGroup, ControlLabel } from 'rsuite';
+import { required } from './validation';
 
 const renderRadioField = fields => {
   const {
@@ -11,33 +12,33 @@ const renderRadioField = fields => {
     style,
     id,
     input: { value, onChange, ...rest },
-    // meta: { touched, error },
+    meta: { touched, error },
     disabled,
-    isRequired,
-    checked,
     defaultChecked,
     inline,
+    input,
+    labelColor,
   } = fields;
   return (
     <FormGroup className="pt-3 m-0" style={style}>
+      <ControlLabel htmlFor={id} style={{ color: labelColor }}>
+        {title}
+        <span style={{ color: 'red', fontSize: 10 }}>
+          {touched && error && ` * ( ${error} )`}
+        </span>
+      </ControlLabel>
       <RadioGroup>
         <Radio
+          {...input}
           name={name}
           title={title}
-          // options={[
-          //   { label: 'Male', value: 'MALE' },
-          //   { label: 'Female', value: 'FEMALE' },
-          //   { label: 'Other', value: '' },
-          // ]}
           className={className}
-          value="A"
+          value={input.value}
           onChange={onChange}
           {...rest}
           id={id}
           disabled={disabled}
-          isRequired={isRequired}
           defaultChecked={defaultChecked}
-          checked={checked}
           inline={inline}
         />
       </RadioGroup>
@@ -52,46 +53,36 @@ const RadioField = ({
   className,
   language,
   style,
-  disabled,
   isRequired,
-  defaultChecked,
-  checked,
-  inline,
-}) => (
-  <Field
-    component={renderRadioField}
-    title={title}
-    name={name}
-    id={id}
-    className={className}
-    style={style}
-    language={language}
-    disabled={disabled}
-    isRequired={isRequired}
-    defaultChecked={defaultChecked}
-    checked={checked}
-    inline={inline}
-  />
-);
+}) => {
+  const validate = [];
+  if (isRequired) {
+    validate.push(required);
+  }
+  return (
+    <Field
+      component={renderRadioField}
+      title={title}
+      name={name}
+      id={id}
+      className={className}
+      style={style}
+      language={language}
+      validate={validate}
+    />
+  );
+};
 
 RadioField.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
-  disabled: PropTypes.bool,
   isRequired: PropTypes.bool,
-  defaultChecked: PropTypes.bool,
-  checked: PropTypes.bool,
-  inline: PropTypes.bool,
 };
 
 RadioField.defaultProps = {
   title: '',
   isRequired: false,
-  disabled: false,
-  defaultChecked: false,
-  checked: false,
-  inline: false,
 };
 
 export default RadioField;

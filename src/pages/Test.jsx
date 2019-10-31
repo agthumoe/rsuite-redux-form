@@ -2,7 +2,6 @@ import React from 'react';
 import { Form } from 'rsuite';
 import { reduxForm } from 'redux-form';
 import TagPickerField from '../components/fields/TagPickerField';
-import Field from '../components/fields/Field';
 import RadioField from '../components/fields/RadioField';
 import SelectPickerField from '../components/fields/SelectPickerField';
 import ToogleField from '../components/fields/ToggleField';
@@ -40,7 +39,7 @@ const Test = () => {
         cleanable={false}
       />
       {/* <Field name="name" id="name" /> */}
-      <RadioField name="gender" id="gender" checked />
+      <RadioField name="gender" id="gender" />
       <ToogleField name="enable" id="enable" />
       <CheckboxField name="test" id="test" title="Test" />
     </Form>
