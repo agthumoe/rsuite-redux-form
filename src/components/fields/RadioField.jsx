@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import { FormGroup, Radio, RadioGroup } from 'rsuite';
 
-const renderField = fields => {
+const renderRadioField = fields => {
   const {
     name,
     label,
@@ -60,7 +60,7 @@ const RadioField = ({
   inline,
 }) => (
   <Field
-    component={renderField}
+    component={renderRadioField}
     name={name}
     id={id}
     label={label}
