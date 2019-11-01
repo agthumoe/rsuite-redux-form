@@ -41,7 +41,7 @@ const Test = () => {
       {/* <Field name="name" id="name" /> */}
       <RadioField name="gender" id="gender" />
       <ToogleField name="enable" id="enable" />
-      <CheckboxField name="test" id="test" title="Test" />
+      <CheckboxField name="test" id="test" />
     </Form>
   );
 };
